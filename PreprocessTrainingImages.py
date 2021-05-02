@@ -1,12 +1,14 @@
 """
 Preprocess image folders to be used in training the classification model
-- Resize and crop to ensure all images have the same size
+- Resize each image to ensure all images have the same size
 - Convert colored images to greyscale to remove excess noise
+- Produce duplicate images of each img with small rotations to increase the # of training images
 """
 
 import cv2
 import os
 import glob
+import numpy as np
 
 from os import listdir, makedirs
 from os.path import isfile, join
@@ -14,10 +16,28 @@ from os.path import isfile, join
 # Constants
 TARGET_WIDTH = 160
 TARGET_HEIGHT = 320
+THETAS = [-3, -2, -1, 0, 1, 2, 3, 177, 178, 179, 180, 181, 182, 183]
 
 # Set directory paths
-path = 'images/p_colour'  # Source Folder
-dstpath = 'images/p'  # Destination Folder
+path = 'images/n_colour'  # Source Folder
+dstpath = 'images/n'  # Destination Folder
+
+# Helper functions
+
+
+def rotate_image(image, angle):
+    """
+    Finds the center of image, 
+    calculates the transformation matrix, 
+    and applies to the image
+    """
+    image_center = tuple(np.array(image.shape[1::-1]) / 2)
+    rot_mat = cv2.getRotationMatrix2D(
+        (image_center[0], image_center[1]), angle, 1.0)
+    result = cv2.warpAffine(
+        image, rot_mat, image.shape[1::-1], flags=cv2.INTER_LINEAR)
+    return result
+
 
 # create destination directory
 try:
@@ -34,17 +54,22 @@ for image in files:
         # scale width to TARGET_WIDTH and preserve aspect ratio
         width = int(img.shape[1])
         height = int(img.shape[0])
-        scale_factor = TARGET_WIDTH / width
-        dim = (TARGET_WIDTH, int(height * scale_factor))
+        dim = (TARGET_WIDTH, TARGET_HEIGHT)
         resized = cv2.resize(img, dim)
 
         # crop image height to TARGET_HEIGHT
-        cropped = resized[0:TARGET_HEIGHT, 0:TARGET_WIDTH]
+        # cropped = resized[0:TARGET_HEIGHT, 0:TARGET_WIDTH]
 
         # convert cropped image to greyscale
-        gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
-        dstPath = join(dstpath, image)
-        cv2.imwrite(dstPath, gray)
+        gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
+
+        # for each angle in theta, produce a rotated image and write it to file
+        for t in THETAS:
+            image_file_name = str(t) + image
+            gray_rotated = rotate_image(gray, t)
+
+            dstPath = join(dstpath, image_file_name)
+            cv2.imwrite(dstPath, gray_rotated)
     except:
         print("{} is not converted".format(image))
 
