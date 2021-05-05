@@ -14,9 +14,9 @@ from os import listdir, makedirs
 from os.path import isfile, join
 
 # Constants
-TARGET_WIDTH = 160
-TARGET_HEIGHT = 320
-THETAS = [-3, -2, -1, 0, 1, 2, 3, 177, 178, 179, 180, 181, 182, 183]
+TARGET_WIDTH = 60
+TARGET_HEIGHT = 114
+THETAS = [-3, -1, 0, 1, 3, 177, 179, 180, 181, 183]
 
 # Set directory paths
 path = 'images/n_colour'  # Source Folder
