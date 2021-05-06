@@ -27,9 +27,8 @@ dstpath = 'images/n'  # Destination Folder
 
 def rotate_image(image, angle):
     """
-    Finds the center of image, 
-    calculates the transformation matrix, 
-    and applies to the image
+    Rotate image counterclockwise by angle (degrees).
+    Finds the center of image, calculates the transformation matrix, and applies to the image
     """
     image_center = tuple(np.array(image.shape[1::-1]) / 2)
     rot_mat = cv2.getRotationMatrix2D(

@@ -1,3 +1,8 @@
+"""
+Practice finding edges present in given image
+ """
+
+
 import cv2 as cv  # self-reminder to first open VScode from anaconda prompt
 import numpy as np
 

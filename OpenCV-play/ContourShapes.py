@@ -1,3 +1,7 @@
+"""
+Practice finding contours (continuous lines) in a given image
+"""
+
 import numpy as np
 import cv2
 

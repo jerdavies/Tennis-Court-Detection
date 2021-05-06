@@ -1,5 +1,8 @@
 """
-Detect tennis courts from aerial satellite images.
+!! WORK IN PROGRESS - still not functional !!
+
+Detect tennis courts from aerial satellite images using geometric 
+approach with lines and contours (continuous lines).
 
 Portions of code derived from:
 - Mask Loop: https://stackoverflow.com/questions/55496402/detecting-tennis-court-lines-intercepts

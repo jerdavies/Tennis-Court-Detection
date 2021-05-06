@@ -1,8 +1,5 @@
 """
-Find the intersection points of lines.
-
- Code from here:
-!!!
+Practice detecting lines
 """
 
 import numpy as np

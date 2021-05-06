@@ -1,4 +1,8 @@
-# Course followed: https://youtu.be/oXlwWbU8l2o
+"""
+Learning the basics of the OpenCV library
+
+Course followed: https://youtu.be/oXlwWbU8l2o
+"""
 
 import cv2 as cv  # self-reminder to first open VScode from anaconda prompt
 

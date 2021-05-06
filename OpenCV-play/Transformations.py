@@ -1,6 +1,3 @@
-import cv2 as cv  # self-reminder to first open VScode from anaconda prompt
-import numpy as np
-
 """ Note(s):
 - When working with OpenCV Python, images are stored in numpy ndarray
 height = img.shape[0]
@@ -14,6 +11,9 @@ From the above, we can use an Affine Transformation to express:
 --Translations (vector addition)
 --Scale operations (linear transformation)
 """
+
+import cv2 as cv  # self-reminder to first open VScode from anaconda prompt
+import numpy as np
 
 # method that takes in path to image and returns image as a matrix of pixels
 img = cv.imread('images/147.jpg')

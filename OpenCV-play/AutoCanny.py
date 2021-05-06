@@ -1,7 +1,7 @@
 """
-Find the intersection points of lines.
+Practice finding lines and then drawing them to connect across the image
 
- Code from here:
+ Code foundation from here:
 - auto_canny: https://www.pyimagesearch.com/2015/04/06/zero-parameter-automatic-canny-edge-detection-with-python-and-opencv/
 """
 
