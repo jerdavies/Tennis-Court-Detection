@@ -1,5 +1,5 @@
 """
-!! WORK IN PROGRESS - still not functional !!
+!! WORK IN PROGRESS !!
 
 Detect tennis courts from aerial satellite images using a trained HAAR
 classification model.
@@ -11,8 +11,9 @@ Base code sourced from:
 - https://www.geeksforgeeks.org/detect-an-object-with-opencv-python/
 """
 
+from transformations import rotate_image
+
 import cv2
-import numpy as np
 from matplotlib import pyplot as plt
 
 # Constants
@@ -20,24 +21,8 @@ MIN_SIZE_DETECTED = 100  # Objects with height or width smaller than this are ig
 MIN_NEIGHBOURS = 3      # Num neighbors each candidate rect should have to retain it
 
 # File paths (Input variables)
-test_img_path = "images/test_objects2.jpg"
-classifier_path = 'classifier/cascade4.xml'
-
-# Helper functions
-
-
-def rotate_image(image, angle):
-    """
-    Rotate image counterclockwise by angle (degrees).
-    Finds the center of image, calculates the transformation matrix, and applies to the image
-    """
-    image_center = tuple(np.array(image.shape[1::-1]) / 2)
-    rot_mat = cv2.getRotationMatrix2D(
-        (image_center[0], image_center[1]), angle, 1.0)
-    result = cv2.warpAffine(
-        image, rot_mat, image.shape[1::-1], flags=cv2.INTER_LINEAR)
-    return result
-
+test_img_path = "images/test_true_p/test3_p.jpg"
+classifier_path = 'classifier/cascade1.xml'
 
 # Opening image
 img = cv2.imread(test_img_path)
@@ -54,7 +39,7 @@ img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 tennis_data = cv2.CascadeClassifier(classifier_path)
 
 found = tennis_data.detectMultiScale(
-    img_gray, minSize=(MIN_SIZE_DETECTED, MIN_SIZE_DETECTED), minNeighbors=3)
+    img_gray, minSize=(MIN_SIZE_DETECTED, MIN_SIZE_DETECTED), minNeighbors=MIN_NEIGHBOURS)
 
 # If 1+ tennis court is found, draw a rectangle around it and label it. Else do nothing
 amount_found = len(found)
