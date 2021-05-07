@@ -19,12 +19,11 @@ from matplotlib import pyplot as plt
 
 # Constants
 MIN_SIZE_DETECTED = 100  # Objects with height or width smaller than this are ignored
-MIN_NEIGHBOURS = 3      # Num neighbors each candidate rect should have to retain it
+MIN_NEIGHBOURS = 3       # Num neighbors each candidate rect should have to retain it
 
 # File paths (Input variables)
-test_img_path = "images/test_true_p/test1_p.jpg"
+test_img_path = "images/test_true_n/test5_n.jpg"
 classifier_path = 'classifier/cascade4.xml'
-
 
 # Open image as BRG; convert to RGB and grayscale
 img = cv2.imread(test_img_path)
