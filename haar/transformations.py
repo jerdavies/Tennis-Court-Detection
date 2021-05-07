@@ -1,7 +1,5 @@
 """
-Module with definitions for image transformations such as
-- rotate_image
-- dilate_image
+Module with definitions for image transformations such as rotations and dilations
 """
 
 import cv2
