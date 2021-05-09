@@ -18,13 +18,13 @@ from matplotlib import pyplot as plt
 
 # Constants
 MIN_SIZE_DETECTED = 100  # Objects with height or width smaller than this are ignored
-MIN_NEIGHBOURS = 3       # Num neighbors each candidate rect should have to retain
+MIN_NEIGHBOURS = 5       # Num neighbors each candidate rect should have to retain
 SCALE_FACTOR = 1.1       # Greater scale reduces propensity for positives. Must be > 1
-ROTATE_COUNTER = -45        # degrees to rotate image counterclockwise
+ROTATE_COUNTER = 0        # degrees to rotate image counterclockwise
 
 # File paths (Input variables)
-test_img_path = "images/test_true_p/test3_p.jpg"
-classifier_path = 'classifier/cascade5.xml'
+test_img_path = "images/test_true_n/test5_n.jpg"
+classifier_path = 'classifier/cascade7.xml'
 
 # Open image as BRG; convert to RGB and grayscale
 img = cv2.imread(test_img_path)
