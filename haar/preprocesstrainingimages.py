@@ -16,11 +16,11 @@ from os.path import isfile, join
 # Constants
 TARGET_WIDTH = 60
 TARGET_HEIGHT = 114
-THETAS = [-2, 0, 2, 180, 178, 182]
+THETAS = [0, 180]
 
 # Set directory paths
-path = 'images/p_colour'  # Source Folder
-dstpath = 'images/p'      # Destination Folder
+path = 'images/n_colour'  # Source Folder
+dstpath = 'images/n'      # Destination Folder
 
 # create destination directory
 try:
